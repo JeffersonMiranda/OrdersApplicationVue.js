@@ -1,19 +1,19 @@
-import http from '../../http';
+import { http } from '../../http';
 
 export default {
 
-    state = {
-        produtos =[]
+    state: {
+        produtos: []
     },
-    mutations = {
-        SET_PRODUTOS = (state, produtos) => {
-            state.produtos = produtos
+    mutations: {
+        SET_PRODUTOS: (state, data) => {
+            state.produtos = data
         }
     },
-    actions = {
-        SET_PRODUTOS = () => {
+    actions: {
+        SetProdutos: ({ commit }) => {
             return new Promise((resolve, reject) => {
-                http.get('/produtos/').then()((response) => {
+                http.get('/produtos/').then(response => {
                     commit('SET_PRODUTOS', response.data);
                     resolve(response);
                 }).catch((error) => {
@@ -22,8 +22,8 @@ export default {
             })
         }
     },
-    getters = {
-        getProdutos = () => {
+    getters: {
+        getProdutos: (state) => {
             return state.produtos
         }
     }

@@ -1,22 +1,29 @@
-import http from '../../http';
+import { http } from '../../http';
 
 export default {
 
-    state = {
-        clientes =[]
+    state: {
+        clientes: []
     },
-    mutations = {
-        SET_CLIENTES = (state, clientes) => {
-            state.clientes = clientes
+    mutations: {
+        SET_CLIENTES: (state, data) => {
+            state.clientes = data
         }
     },
-    actions = {
-        SET_CLIENTES = () => {
-            http.get()
+    actions: {
+        SetClientes: ({ commit }) => {
+            return new Promise((resolve, reject) => {
+                http.get('/clientes/').then(response => {
+                    commit('SET_CLIENTES', response.data);
+                    resolve(response);
+                }).catch(error => {
+                    reject(error);
+                })
+            })
         }
     },
-    getters = {
-        getClientes = () => {
+    getters: {
+        getClientes: (state) => {
             return state.clientes
         }
     }
