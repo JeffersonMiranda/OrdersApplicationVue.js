@@ -14,7 +14,7 @@ export default new Router({
       component: NewPedido
     },
     {
-      path: '/:id',
+      path: '/:id', // URL PARA MODIFICAR PEDIDOS EXISTENTES
       name: 'ModifyPedido',
       component: ModifyPedido
     }
