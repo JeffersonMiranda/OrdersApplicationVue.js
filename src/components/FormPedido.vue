@@ -8,7 +8,7 @@
       <el-row>
           <el-col :span="8">
           <el-form-item label="Cliente">
-             <el-select v-model="Cliente" placeholder="Selecione">
+             <el-select v-model="Cliente" placeholder="Selecione" no-data-text=" ">
             <el-option
             v-for="item in ListaClientes"
             :key="item.id"
@@ -26,7 +26,7 @@
        <el-row type="flex" justify="space-around">
           <el-col :span="8">
           <el-form-item label="Produto">
-        <el-select v-model="Item.produto" placeholder="Selecione" value-key="id">
+        <el-select v-model="Item.produto" no-data-text=" " placeholder="Selecione" value-key="id">
             <el-option
             v-for="item in ListaProdutos"
             :key="item.id"
