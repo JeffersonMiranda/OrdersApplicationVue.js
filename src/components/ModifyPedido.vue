@@ -32,17 +32,15 @@ export default {
   methods: {
     ...mapActions(["GetPedidoPorId", "ModificarPedido"]),
     SalvarAlteracoes() {
-      
-      this.pedido = Object.assign({}, { ...this.getPedidoSistema });
+      this.pedido = JSON.parse(JSON.stringify(this.getPedidoSistema)); // RECEBENDO PEDIDO DO STATE PARA SER ENVIADO PARA O BANCO
 
-      this.pedido.cliente = 1;
-      this.pedido.id = 499;
-      this.pedido.itens[0].quantidade = 55;
+      this.pedido.itens.map(item => {
+        let p = item.produto.id;
+        item.produto_id = p;
+        delete item.produto;
+      });
 
-      alert(JSON.stringify(this.pedido));
-
-      /*
-        this.ModificarPedido(pedido)
+      this.ModificarPedido(this.pedido)
         .then(response => {
           if (response.status == 201) {
             alert("Modificado com sucesso");
@@ -53,7 +51,6 @@ export default {
             alert("Erro ao modificar");
           }
         });
-        */
     }
   },
   created() {
