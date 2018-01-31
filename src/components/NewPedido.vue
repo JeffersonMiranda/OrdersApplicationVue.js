@@ -28,7 +28,7 @@ export default {
       var c = this.getPedidoSistema().cliente; // RECUPERANDO CLIENTE A SER CADASTRADO COM O PEDIDO
       var itens = this.getPedidoSistema().itens.map(item => {
         var i = Object.assign({}, item); // CLONANDO O OBJETO
-        i.produto = item.produto.id;
+        i.produto_id = item.produto.id;
         return i;
       });
       return { cliente: c, itens: itens };
