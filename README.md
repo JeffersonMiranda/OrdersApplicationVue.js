@@ -1,6 +1,9 @@
 # pedidos-application
 
-> Aplicação teste 
+Sample application to manage orders in Vue.js and API in Django Rest.
+
+Application: https://immense-garden-15083.herokuapp.com/
+API: https://github.com/JeffersonMiranda/DjangoOrdersAPI
 
 ## Build Setup
 
